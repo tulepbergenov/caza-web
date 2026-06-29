@@ -1,7 +1,7 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 
+import { AppDevtools } from "@/app/devtools";
 import { ThemeProvider } from "@/app/providers/theme-provider";
-import { AppDevtools } from "@/app/router";
 
 function RootLayout() {
   return (

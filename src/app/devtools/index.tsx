@@ -6,6 +6,8 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo } from "react";
 
+import { STORAGE_KEYS } from "@/shared/config";
+
 export function AppDevtools() {
   const { resolvedTheme } = useTheme();
 
@@ -37,11 +39,11 @@ export function AppDevtools() {
 
 function useSyncDevtoolsConfig(cfg: TanStackDevtoolsReactInit["config"]) {
   useEffect(() => {
-    const raw = localStorage.getItem("tanstack_devtools_settings");
+    const raw = localStorage.getItem(STORAGE_KEYS.devtools);
     if (!raw) return;
     try {
       localStorage.setItem(
-        "tanstack_devtools_settings",
+        STORAGE_KEYS.devtools,
         JSON.stringify({ ...JSON.parse(raw), ...cfg }),
       );
     } catch (error) {

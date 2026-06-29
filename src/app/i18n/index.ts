@@ -5,6 +5,7 @@ import { initReactI18next } from "react-i18next";
 
 import { IS_PROD } from "@/shared/config/env";
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from "@/shared/config/languages";
+import { STORAGE_KEYS } from "@/shared/config/storage-keys";
 
 i18n
   .use(Backend)
@@ -15,7 +16,7 @@ i18n
     debug: !IS_PROD,
     detection: {
       caches: ["localStorage"],
-      lookupLocalStorage: "CAZA_APP_lng",
+      lookupLocalStorage: STORAGE_KEYS.language,
       order: ["localStorage", "navigator"],
     },
     fallbackLng: DEFAULT_LANGUAGE,
