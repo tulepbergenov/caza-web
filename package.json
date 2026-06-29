@@ -10,14 +10,22 @@
     "lint": "eslint . --fix",
     "lint:css": "stylelint \"**/*.css\" --fix",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "i18n:extract": "i18next-cli extract",
+    "i18n:types": "i18next-cli types",
+    "i18n:sync": "i18next-cli sync",
+    "i18n:status": "i18next-cli status"
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.2.8",
     "@tanstack/react-router": "^1.170.16",
+    "i18next": "^26.3.3",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "i18next-http-backend": "^4.0.0",
     "next-themes": "^0.4.6",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-i18next": "^17.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -46,6 +54,7 @@
     "eslint-plugin-sonarjs": "^4.1.0",
     "eslint-plugin-unicorn": "^69.0.0",
     "globals": "^17.7.0",
+    "i18next-cli": "^1.64.2",
     "prettier": "^3.9.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "stylelint": "^17.14.0",
