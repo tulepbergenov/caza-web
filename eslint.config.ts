@@ -1,5 +1,5 @@
-import css from "@eslint/css";
 import js from "@eslint/js";
+import boundaries from "eslint-plugin-boundaries";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import perfectionist from "eslint-plugin-perfectionist";
 import pluginPromise from "eslint-plugin-promise";
@@ -60,15 +60,6 @@ export default defineConfig([
     ...(pluginPromise.configs["flat/recommended"] as any),
   },
   {
-    extends: ["css/recommended"],
-    files: ["**/*.css"],
-    language: "css/css",
-    plugins: { css },
-    rules: {
-      "css/no-invalid-at-rules": "off",
-    },
-  },
-  {
     files: ["src/routes/**"],
     rules: {
       "react-refresh/only-export-components": "off",
@@ -77,7 +68,6 @@ export default defineConfig([
   {
     files: [JS_FILES],
     rules: {
-      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "func-style": ["error", "declaration", { allowArrowFunctions: false }],
@@ -142,6 +132,33 @@ export default defineConfig([
           message: "JSX is not allowed in .ts files. Use .tsx instead.",
           selector: "JSXElement",
         },
+      ],
+    },
+  },
+  {
+    files: [JS_FILES],
+    plugins: { boundaries },
+    rules: {
+      "boundaries/dependencies": [
+        "error",
+        {
+          default: "disallow",
+          rules: [
+            { allow: ["app", "features", "routes", "shared"], from: "app" },
+            { allow: ["app", "features", "shared"], from: "routes" },
+            { allow: ["shared", "features"], from: "features" },
+            { allow: ["shared"], from: "shared" },
+          ],
+        },
+      ],
+      "boundaries/no-private": "error",
+    },
+    settings: {
+      "boundaries/elements": [
+        { pattern: "src/app/**", type: "app" },
+        { pattern: "src/features/*", type: "features" },
+        { pattern: "src/routes/**", type: "routes" },
+        { pattern: "src/shared/**", type: "shared" },
       ],
     },
   },
