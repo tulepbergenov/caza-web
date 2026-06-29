@@ -1,6 +1,15 @@
 {
+  "errorBoundary": {
+    "retry": "Попробовать снова",
+    "title": "Что-то пошло не так",
+    "unknownError": "Неизвестная ошибка"
+  },
   "languageSelect": {
     "label": "Язык"
+  },
+  "notFound": {
+    "action": "На главную",
+    "title": "Страница не найдена"
   },
   "themeToggler": {
     "switchToDark": "Переключить на тёмную тему",

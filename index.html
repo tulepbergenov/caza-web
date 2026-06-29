@@ -5,6 +5,16 @@
 >
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var theme = localStorage.getItem("CAZA_APP_theme");
+        var isDark =
+          theme === "dark" ||
+          (theme !== "light" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", isDark);
+      })();
+    </script>
     <meta http-equiv="Content-Language" content="en, ru" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -38,10 +48,63 @@
       name="twitter:description"
       content="Chat & Send File with your organization"
     />
+    <style>
+      body {
+        margin: 0;
+        background-color: #ffffff;
+        color: #131316;
+      }
+      html.dark body {
+        background-color: #131316;
+        color: #ffffff;
+      }
+      #root-preloader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: inherit;
+      }
+      #root-preloader svg {
+        width: 32px;
+        height: 32px;
+        animation: spin 0.75s linear infinite;
+        color: currentColor;
+        opacity: 0.5;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #root-preloader svg {
+          animation: none;
+        }
+      }
+    </style>
   </head>
-  <body class="font-montserrat h-full antialiased">
+  <body class="font-montserrat h-full antialiased dark:bg-[#131316]">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" class="flex h-full flex-col"></div>
+    <div id="root" class="flex h-full flex-col">
+      <div id="root-preloader" aria-label="Loading" role="status">
+        <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+            opacity="0.25"
+          />
+          <path
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

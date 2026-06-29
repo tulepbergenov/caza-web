@@ -11,3 +11,5 @@ if (!root) {
 }
 
 createRoot(root).render(<RouterProvider router={router} />);
+
+document.querySelector("#root-preloader")?.remove();

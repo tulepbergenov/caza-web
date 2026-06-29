@@ -1,6 +1,15 @@
 {
+  "errorBoundary": {
+    "retry": "Try again",
+    "title": "Something went wrong",
+    "unknownError": "Unknown error"
+  },
   "languageSelect": {
     "label": "Language"
+  },
+  "notFound": {
+    "action": "Go home",
+    "title": "Page not found"
   },
   "themeToggler": {
     "switchToDark": "Switch to dark theme",
