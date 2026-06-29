@@ -1,4 +1,5 @@
 import babel from "@rolldown/plugin-babel";
+import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -12,6 +13,7 @@ export default defineConfig({
     outDir: "build",
   },
   plugins: [
+    tailwindcss(),
     tanstackRouter({
       autoCodeSplitting: true,
       routesDirectory: "./src/routes",
@@ -19,9 +21,7 @@ export default defineConfig({
     }),
     react(),
     babel({ presets: [reactCompilerPreset()] }),
-    createHtmlPlugin({
-      minify: true,
-    }),
+    createHtmlPlugin({ minify: true }),
   ],
   preview: {
     host: true,

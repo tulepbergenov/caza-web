@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+@utility container {
+  @apply mx-auto px-[16px] sm:max-w-xl;
+}

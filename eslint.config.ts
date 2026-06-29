@@ -12,33 +12,61 @@ import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
+const JS_FILES = "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}";
+
 export default defineConfig([
   {
     ignores: ["build", "node_modules", "src/routeTree.gen.ts"],
   },
   {
     extends: ["js/recommended"],
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    files: [JS_FILES],
     languageOptions: { globals: globals.browser },
     plugins: { js },
   },
   tseslint.configs.recommended,
-  reactHooks.configs.flat.recommended,
-  reactRefresh.configs.vite,
-  perfectionist.configs["recommended-natural"],
-  unicorn.configs.recommended,
-  reactCompiler.configs.recommended,
-  jsxA11y.flatConfigs.recommended,
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sonarjs.configs!.recommended as any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pluginPromise.configs["flat/recommended"] as any,
+  {
+    files: [JS_FILES],
+    ...reactHooks.configs.flat.recommended,
+  },
+  {
+    files: [JS_FILES],
+    ...reactRefresh.configs.vite,
+  },
+  {
+    files: [JS_FILES],
+    ...perfectionist.configs["recommended-natural"],
+  },
+  {
+    files: [JS_FILES],
+    ...unicorn.configs.recommended,
+  },
+  {
+    files: [JS_FILES],
+    ...reactCompiler.configs.recommended,
+  },
+  {
+    files: [JS_FILES],
+    ...jsxA11y.flatConfigs.recommended,
+  },
+  {
+    files: [JS_FILES],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...(sonarjs.configs!.recommended as any),
+  },
+  {
+    files: [JS_FILES],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...(pluginPromise.configs["flat/recommended"] as any),
+  },
   {
     extends: ["css/recommended"],
     files: ["**/*.css"],
     language: "css/css",
     plugins: { css },
+    rules: {
+      "css/no-invalid-at-rules": "off",
+    },
   },
   {
     files: ["src/routes/**"],
@@ -47,9 +75,12 @@ export default defineConfig([
     },
   },
   {
+    files: [JS_FILES],
     rules: {
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-explicit-any": "error",
+      "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "perfectionist/sort-imports": [
         "error",
         {

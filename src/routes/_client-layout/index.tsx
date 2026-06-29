@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { ThemeToggler } from "@/features/theme-toggler";
+
 export const Route = createFileRoute("/_client-layout/")({
   component: Index,
 });
@@ -7,9 +9,10 @@ export const Route = createFileRoute("/_client-layout/")({
 function Index() {
   return (
     <section>
-      <header>
+      <header className="container">
         <header>
-          <h1>hello world</h1>
+          <h1>Chat & Send Files with your organization</h1>
+          <ThemeToggler />
         </header>
       </header>
     </section>
