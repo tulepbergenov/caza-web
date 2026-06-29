@@ -2,6 +2,7 @@ import {
   TanStackDevtools,
   type TanStackDevtoolsReactInit,
 } from "@tanstack/react-devtools";
+import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo } from "react";
@@ -27,6 +28,11 @@ export function AppDevtools() {
       config={cfg}
       key={resolvedTheme}
       plugins={[
+        {
+          id: "query",
+          name: "Query",
+          render: () => <ReactQueryDevtoolsPanel />,
+        },
         {
           id: "router",
           name: "Router",

@@ -1,13 +1,19 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 
 import { AppDevtools } from "@/app/devtools";
-import { ThemeProvider } from "@/app/providers/theme-provider";
+import { HttpClientProvider } from "@/app/providers/http-client";
+import { QueryClientProvider } from "@/app/providers/query-client";
+import { ThemeProvider } from "@/app/providers/theme";
 
 function RootLayout() {
   return (
     <ThemeProvider>
-      <Outlet />
-      <AppDevtools />
+      <QueryClientProvider>
+        <HttpClientProvider>
+          <Outlet />
+          <AppDevtools />
+        </HttpClientProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

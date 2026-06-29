@@ -4,7 +4,10 @@ import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 import { IS_PROD } from "@/shared/config/env";
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from "@/shared/config/languages";
+import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+} from "@/shared/config/languages";
 import { STORAGE_KEYS } from "@/shared/config/storage-keys";
 
 i18n

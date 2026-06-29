@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import boundaries from "eslint-plugin-boundaries";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import perfectionist from "eslint-plugin-perfectionist";
@@ -49,6 +50,7 @@ export default defineConfig([
     files: [JS_FILES],
     ...jsxA11y.flatConfigs.recommended,
   },
+  ...pluginQuery.configs["flat/recommended"],
   {
     files: [JS_FILES],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

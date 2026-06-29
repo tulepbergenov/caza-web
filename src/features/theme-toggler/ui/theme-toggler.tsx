@@ -10,7 +10,9 @@ export function ThemeToggler() {
 
   return (
     <button
-      aria-label={t(isDark ? "themeToggler.switchToLight" : "themeToggler.switchToDark")}
+      aria-label={t(
+        isDark ? "themeToggler.switchToLight" : "themeToggler.switchToDark",
+      )}
       onClick={() => setTheme(nextTheme)}
       type="button"
     >

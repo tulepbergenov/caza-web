@@ -7,7 +7,9 @@ export function LanguageSelect() {
 
   return (
     <select
-      onChange={(e) => changeLanguage(e.target.value as Parameters<typeof changeLanguage>[0])}
+      onChange={(e) =>
+        changeLanguage(e.target.value as Parameters<typeof changeLanguage>[0])
+      }
       value={currentLanguage.code}
     >
       {LANGUAGES_LIST.map((lang) => (

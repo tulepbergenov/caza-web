@@ -1,7 +1,11 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
-import { DEFAULT_LANGUAGE, type LanguageCode, LANGUAGES } from "@/shared/config/languages";
+import {
+  DEFAULT_LANGUAGE,
+  type LanguageCode,
+  LANGUAGES,
+} from "@/shared/config/languages";
 
 export function useLanguageSelect() {
   const { i18n } = useTranslation();
