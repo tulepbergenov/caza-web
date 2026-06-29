@@ -6,7 +6,7 @@ export const Route = createFileRoute("/_client-layout")({
 
 function RouteComponent() {
   return (
-    <main>
+    <main className="flex-auto">
       <Outlet />
     </main>
   );
