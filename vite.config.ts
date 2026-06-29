@@ -2,6 +2,7 @@ import babel from "@rolldown/plugin-babel";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { createHtmlPlugin } from "vite-plugin-html";
 
 const PORT = 8000;
 
@@ -18,6 +19,9 @@ export default defineConfig({
     }),
     react(),
     babel({ presets: [reactCompilerPreset()] }),
+    createHtmlPlugin({
+      minify: true,
+    }),
   ],
   preview: {
     host: true,

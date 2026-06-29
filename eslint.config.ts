@@ -48,7 +48,6 @@ export default defineConfig([
   },
   {
     rules: {
-      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "perfectionist/sort-imports": [
