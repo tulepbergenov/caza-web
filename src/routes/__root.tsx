@@ -5,9 +5,7 @@ import { AppDevtools } from "@/app/devtools";
 import { HttpClientProvider } from "@/app/providers/http-client";
 import { QueryClientProvider } from "@/app/providers/query-client";
 import { ThemeProvider } from "@/app/providers/theme";
-import { ErrorFallback } from "@/shared/ui/error-fallback";
-import { NotFound } from "@/shared/ui/not-found";
-import { PageLoader } from "@/shared/ui/page-loader";
+import { ErrorFallback, NotFound, PageLoader } from "@/shared/ui";
 
 function RootLayout() {
   return (
